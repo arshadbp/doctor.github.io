@@ -1,0 +1,14 @@
+.CursorPointer{
+
+    cursor: pointer;
+}
+
+
+.backgroundColor{
+    background-color:#347AB6;
+}
+
+.textcolor{
+    color: white;
+    text-align: center;
+}

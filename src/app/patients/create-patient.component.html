@@ -1,0 +1,209 @@
+<div class="row">
+    <div class="col-md-2">
+      </div>
+
+  <div class="col-md-8">
+  <form #employeeForm="ngForm" ngNativeValidate novalidate (ngSubmit)="savePatients()">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{panelTitle}}</h3>
+      </div>
+     
+      <div class="panel-body">
+          <fieldset >
+              <legend>Basic Information</legend>
+       <div class="row">
+          <div class="col-md-6">
+        <div class="form-group" [class.has-error]="PassNumber.invalid && PassNumber.touched"
+           [class.has-success] = "PassNumber.valid">
+          <label for="PassNumber" class="control-label">Pass Number</label>
+          <input required id="PassNumber" maxlength="8"  type="text" #PassNumber="ngModel" class="form-control"
+                 name="PassNumber" [(ngModel)]="patients.PassNumber">
+                 <span class="help-block" *ngIf="PassNumber.invalid && PassNumber.touched">
+                   Pass Number is required
+                 </span>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        <div class="form-group" [class.has-error]="ForeNames.invalid && ForeNames.touched"
+        [class.has-success] = "ForeNames.valid">        
+          <label for="ForeNames" class="control-label">Fore Name</label>
+          <input required id="ForeNames" type="text" #ForeNames="ngModel" class="form-control"
+                 name="ForeNames" maxlength="12" [(ngModel)]="patients.ForeNames">
+                 <span class="help-block" *ngIf="ForeNames.invalid && ForeNames.touched">
+                  Fore Names is required
+                </span>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="DateOfBirth">Date of Birth</label>
+            <input readonly="true" id="DateOfBirth"  name="DateOfBirth" [(ngModel)]="patients.DateOfBirth" placement="bottom"
+                    type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control" />
+          </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group" [class.has-error]="Gender.invalid && Gender.touched">
+                <label class="control-label">Gender</label>
+                <div class="form-control">
+                  <label class="radio-inline">
+                    <input type="radio" required #Gender="ngModel" name="Gender" value="male" [(ngModel)]="patients.Gender">
+                    Male
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" required #Gender="ngModel" name="Gender" value="female" [(ngModel)]="patients.Gender">
+                    Female
+                  </label>
+                  <span class="help-block" *ngIf="Gender.invalid && Gender.touched">
+                    Gender is required
+                  </span>
+                </div>
+              </div>   
+
+          </div>
+
+      </div>
+     
+      <div class="row">
+          <div class="col-md-6">
+              <div class="form-group" [class.has-error]="HomeTelephoneNumber.invalid && HomeTelephoneNumber.touched"
+              [class.has-success] = "HomeTelephoneNumber.valid"
+              >
+                  <label  for="HomeTelephoneNumber" class="control-label">Home Telephone Number</label>
+                  <input required id="HomeTelephoneNumber" maxlength="15" type="text" #HomeTelephoneNumber="ngModel" class="form-control"
+                         name="HomeTelephoneNumber" [(ngModel)]="patients.HomeTelephoneNumber">
+                         <span class="help-block" *ngIf="HomeTelephoneNumber.invalid && HomeTelephoneNumber.touched">
+                          Telephone Number is required
+                        </span>
+                </div>
+  
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <div class="form-group" [class.has-error]="GeneralPartitioner.invalid && GeneralPartitioner.touched"
+                  [class.has-success] = "GeneralPartitioner.valid">
+                      <label for="GeneralPartitioner">General Practitioner</label>
+                      <select id="GeneralPartitioner" appSelectValidator="-1"  name="GeneralPartitioner"
+                              [(ngModel)]="patients.GeneralPartitioner"  class="form-control" #GeneralPartitioner="ngModel">
+                              
+                              <option  value="-1">Please Select</option>
+                              <option *ngFor="let gp of generalPractitioners" [value]="gp.ID">
+                                  {{gp.GPSurname}}
+                                </option>
+                      </select>
+                      <span class="help-block" *ngIf="GeneralPartitioner.touched && GeneralPartitioner.errors?.defaultSelected ">
+                        General Practitioner is required
+                      </span>
+                    </div>
+                </div>   
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+        <div class="form-group" [class.has-error]="SurName.invalid && SurName.touched"
+           [class.has-success] = "SurName.valid">
+          <label for="SurName" class="control-label">Sur Name</label>
+          <input required id="SurName" maxlength="8"  type="text" #SurName="ngModel" class="form-control"
+                 name="SurName" [(ngModel)]="patients.SurName">
+                 <span class="help-block" *ngIf="SurName.invalid && SurName.touched">
+                    Sur Name  is required
+                 </span>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+    
+      </div>
+      </div>
+      </fieldset>
+
+      <fieldset >
+          <legend>Next Of Kin Information</legend>
+   <div class="row">
+      <div class="col-md-6">
+    <div class="form-group" [class.has-error]="NOKName.invalid && NOKName.touched"
+    [class.has-success] = "NOKName.valid">
+      <label for="NOKName" class="control-label">NOK Name</label>
+      <input required id="NOKName" type="text" #NOKName="ngModel" class="form-control"
+             name="NOKName" maxlength="12" [(ngModel)]="patients.NOKName">
+             <span class="help-block" *ngIf="NOKName.invalid && NOKName.touched">
+              Next Of Kin Name is required
+            </span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group" [class.has-error]="relationShip.invalid && relationShip.touched"
+    [class.has-success] = "relationShip.valid">
+
+      <label for="relationShip" class="control-label">Relation Ship</label>
+      <input required id="relationShip" type="text" #relationShip="ngModel" class="form-control"
+             name="relationShip" [(ngModel)]="patients.relationShip">
+             <span class="help-block" maxlength="12" *ngIf="relationShip.invalid && relationShip.touched">
+              RelationShip is required
+            </span>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <div class="form-group" [class.has-error]="NOKAddress1.invalid && NOKAddress1.touched"
+        [class.has-success] = "NOKAddress1.valid"
+        >
+            <label for="NOKAddress1" class="control-label">NOK Address 1</label>
+            <textarea required id="NOKAddress1" type="text" #NOKAddress1="ngModel" rows="3"  class="form-control"
+                   name="NOKAddress1" [(ngModel)]="patients.NOKAddress1"></textarea>
+                   <span class="help-block" *ngIf="NOKAddress1.invalid && NOKAddress1.touched">
+                   Address 1 Name is required
+                  </span>
+          </div>          
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="NOKAddress2">NOK Address 2</label>
+            <textarea id="NOKAddress2" rows="3" type="text" class="form-control"
+                   name="NOKAddress2" [(ngModel)]="NOKAddress2"></textarea>
+          </div> 
+
+      </div>
+
+  </div>
+ 
+  <div class="row">
+      <div class="col-md-6">
+          <div class="form-group">
+              <label for="NOKAddress3">NOK Address 3</label>
+              <textarea id="NOKAddress3" rows="3" type="text" class="form-control"
+                     name="NOKAddress3" [(ngModel)]="NOKAddress3"></textarea>
+            </div>
+
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <label for="NOKAddress4">NOK Address 4</label>
+              <textarea id="NOKAddress4" rows="3" type="text" class="form-control"
+                     name="NOKAddress4" [(ngModel)]="NOKAddress4"></textarea>
+            </div>
+        </div>
+    </div>
+  </fieldset>
+
+      </div>
+
+      <div class="panel-footer">
+        <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="col-md-2">
+
+    <!-- <app-list-patient></app-list-patient> -->
+
+  </div>
+</div>
+

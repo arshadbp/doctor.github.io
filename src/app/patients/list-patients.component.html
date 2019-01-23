@@ -1,0 +1,47 @@
+
+<div class=" table-responsive">
+  <div class="row">
+    <div class="col-md-3">
+        <nav class="navbar">
+            <input class="form-control" type="text" name="search" [(ngModel)]="filter" placeholder="Search">      
+          </nav>
+
+    </div>
+   
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr class="backgroundColor">      
+      <th class="textcolor">Pass Number</th>
+    
+      <th class="textcolor">Sur Name</th>
+      <th class="textcolor">Date Of Birth</th>
+      <th class="textcolor">Gender</th>
+      <th class="textcolor">Action</th>
+    </tr> 
+  </thead> 
+  <tbody style="text-align: center">
+    <tr *ngFor="let patient of patients | filter:filter | paginate: { itemsPerPage: 8, currentPage: p }; let i = index">
+        
+      <td >{{ patient.PassNumber | titlecase }}</td>
+    
+      <td>{{ patient.SurName | titlecase }}</td>
+      <td>{{ patient.DateOfBirth | date }}</td>
+      <td>{{ patient.Gender | titlecase}}</td>
+      <td>
+         <button class="CursorPointer" type="button" (click)="onDetail(patient.ID)" class="btn btn-primary btn-sm">Detail</button> 
+        | <button class="CursorPointer" type="button" (click)="onDelete(patient.ID)" class="btn btn-danger btn-sm">Delete</button>  
+        | <button class="CursorPointer" type="button" (click)="onEdit(patient.ID)" class="btn btn-success">Edit</button> 
+       </td>
+    </tr> 
+    <tr> 
+      
+      <td colspan="6"><pagination-controls (pageChange)="p = $event"></pagination-controls></td>
+      
+    </tr>
+  </tbody>
+  
+</table>
+
+</div>
+

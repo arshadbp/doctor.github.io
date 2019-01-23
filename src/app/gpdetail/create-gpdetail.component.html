@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-md-2">
+      </div>
+
+  <div class="col-md-8">
+  <form #gpDetailForm="ngForm" ngNativeValidate novalidate (ngSubmit)="saveGPDetail()">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Create GP Detail</h3>
+      </div>
+     
+      <div class="panel-body">
+
+       <div class="row">
+          <div class="col-md-6">
+        <div class="form-group" [class.has-error]="GPCode.invalid && GPCode.touched"
+           [class.has-success] = "GPCode.valid">
+          <label for="GPCode" class="control-label">Pass Number</label>
+          <input required id="GPCode" maxlength="8"  type="text" #GPCode="ngModel" class="form-control"
+                 name="GPCode" [(ngModel)]="gpDetail.GPCode">
+                 <span class="help-block" *ngIf="GPCode.invalid && GPCode.touched">
+                   Pass Number is required
+                 </span>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+          <div class="form-group" [class.has-error]="GPSurname.invalid && GPSurname.touched"
+             [class.has-success] = "GPSurname.valid">
+            <label for="GPSurname" class="control-label">Sur Name</label>
+            <input required id="GPSurname" maxlength="8"  type="text" #GPSurname="ngModel" class="form-control"
+                   name="GPSurname" [(ngModel)]="gpDetail.GPSurname">
+                   <span class="help-block" *ngIf="GPSurname.invalid && GPSurname.touched">
+                    Sur Name is required
+                   </span>
+          </div>
+  
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" [class.has-error]="GPInitials.invalid && GPInitials.touched"
+               [class.has-success] = "GPInitials.valid">
+              <label for="GPInitials" class="control-label">GP Initials</label>
+              <input required id="GPInitials" maxlength="8"  type="text" #GPInitials="ngModel" class="form-control"
+                     name="GPInitials" [(ngModel)]="gpDetail.GPInitials">
+                     <span class="help-block" *ngIf="GPInitials.invalid && GPInitials.touched">
+                       GP Initial is required
+                     </span>
+            </div>
+    
+          </div>
+
+          <div class="col-md-6">
+              <div class="form-group" [class.has-error]="GPPhone.invalid && GPPhone.touched"
+                 [class.has-success] = "GPPhone.valid">
+                <label for="GPPhone" class="control-label">GP Phone</label>
+                <input required id="GPPhone" maxlength="8"  type="text" #GPPhone="ngModel" class="form-control"
+                       name="GPPhone" [(ngModel)]="gpDetail.GPPhone">
+                       <span class="help-block" *ngIf="GPPhone.invalid && GPPhone.touched">
+                         Phone Number is required
+                       </span>
+              </div>
+      
+            </div>
+
+     
+      </div>
+ 
+      </div>
+
+      <div class="panel-footer">
+        <button class="btn btn-primary" type="submit" [disabled]="gpDetailForm.invalid">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="col-md-2">
+
+    <!-- <app-list-patient></app-list-patient> -->
+
+  </div>
+</div>
+

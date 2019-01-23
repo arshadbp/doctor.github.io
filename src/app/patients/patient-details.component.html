@@ -1,0 +1,131 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{patientdetail?.ForeNames}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-xs-10">
+      <div class="row vertical-align">      
+        <div class="col-xs-8">
+          <div class="row">
+            <div class="col-xs-6">
+              Pass Number
+            </div>
+            <div class="col-xs-6">
+              : {{patientdetail?.PassNumber}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+             Fore Names
+            </div>
+            <div class="col-xs-6">
+              :  {{patientdetail?.ForeNames}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+             Sur Names
+            </div>
+            <div class="col-xs-6">
+              :  {{patientdetail?.SurName}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              Date Of Birth
+            </div>
+            <div class="col-xs-6">
+              :  {{patientdetail?.DateOfBirth | date}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              Gender
+            </div>
+            <div class="col-xs-6">
+              :  {{patientdetail?.Gender}}
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-xs-6">
+              Home Telephone Number
+            </div>
+            <div class="col-xs-6">
+              :  {{patientdetail?.HomeTelephoneNumber}}
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-xs-6">
+                  General Partitioner
+              </div>
+              <div class="col-xs-6">
+                :  {{patientdetail?.GPSurName}}
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                 Next Of Kin Name
+                </div>
+                <div class="col-xs-6">
+                  :  {{patientdetail?.NOKName}}
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-xs-6">
+                   Relation
+                  </div>
+                  <div class="col-xs-6">
+                    :  {{patientdetail?.relationShip}}
+                  </div>
+                </div>
+
+              <div class="row">
+                  <div class="col-xs-6">
+                   Nok Address 1
+                  </div>
+                  <div class="col-xs-6">
+                    :  {{patientdetail?.NOKAddress1}}
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        Nok Address 2
+                    </div>
+                    <div class="col-xs-6">
+                      :  {{patientdetail?.NOKAddress2}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-xs-6">
+                          Nok Address 3
+                      </div>
+                      <div class="col-xs-6">
+                        :  {{patientdetail?.NOKAddress3}}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Nok Address 4
+                        </div>
+                        <div class="col-xs-6">
+                          :  {{patientdetail?.NOKAddress4}}
+                        </div>
+                      </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <a class="btn btn-primary" routerLink="/list">
+      Back to List
+    </a>
+  </div>
+</div>
